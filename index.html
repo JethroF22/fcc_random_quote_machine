@@ -1,52 +1,61 @@
 <head>
-<title></title>
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://use.fontawesome.com/aea35b8638.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Lora|Merriweather" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/aea35b8638.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="row">
-  <div class="col-md-12 main" style="position: absolute;">
-      <div class="jumbotron" id="header">
-        <div class="row">
-            <span class=" col-xs-12 col-md-offset-2 col-md-8 text-center"><i class="fa fa-quote-left" aria-hidden="true"></i>  Random Quote Machine</span>
-            <span class="col-xs-12 col-md-offset-4 col-md-4 text-center" id="subtitle">(<em>A FreeCodeCamp <i class="fa fa-free-code-camp" aria-hidden="true"></i> Project</em>)</span>
+    <div id="bg-img"></div>
+    <div class="row">
+        <div class="col-md-12 main" style="position: absolute;">
+            <div class="jumbotron" id="header">
+                <div class="row">
+                    <span class=" col-xs-12 col-md-offset-2 col-md-8 text-center">
+                        <i class="fa fa-quote-left" aria-hidden="true"></i> Random Quote Machine</span>
+                    <span class="col-xs-12 col-md-offset-4 col-md-4 text-center" id="subtitle">(
+                        <em>A FreeCodeCamp
+                            <i class="fa fa-free-code-camp" aria-hidden="true"></i> Project</em>)</span>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="quote-block col-md-offset-3 col-md-6 text-center">
+                    <div class="col-md-offset-1 col-md-8">
+                        <p id="quote-display">Text from the retrieved quote will be displayed here. Press the 'Fetch Quote' button to start receiving
+                            your tidbits of wisdom.</p>
+                        <p>
+                            <a href="https://twitter.com/intent/tweet" class="btn btn-info" data-show-count="false" id="twitter-share">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</a>
+                            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </p>
+                    </div>
+                    <div class="col-md-2" id="button-div">
+                        <button type="button" id="fetch_quote">Fetch quote</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="quote-block col-md-offset-3 col-md-6 text-center" >
-            <div class="col-md-offset-1 col-md-8">
-                <p id="quote-display">Text from the retrieved quote will be displayed here. Press the 'Fetch Quote' button to start receiving your tidbits of wisdom.</p>
-                <p><a href="https://twitter.com/intent/tweet" class="btn btn-info" data-show-count="false" id="twitter-share"><i class="fa fa-twitter" aria-hidden="true"></i>
-Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-            </div>
-            <div class="col-md-2" id="button-div">
-                <button type="button" id="fetch_quote">Fetch quote</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>window.twttr = (function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0],
-t = window.twttr || {};
-if (d.getElementById(id)) return t;
-js = d.createElement(s);
-js.id = id;
-js.src = "https://platform.twitter.com/widgets.js";
-fjs.parentNode.insertBefore(js, fjs);
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
 
-t._e = [];
-t.ready = function(f) {
-t._e.push(f);
-};
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
 
-return t;
-}(document, "script", "twitter-wjs"));</script>
-<script src="script.js">
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
+    <script src="script.js">
 
-</script>
+    </script>
 </body>

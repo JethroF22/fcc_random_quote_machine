@@ -1,33 +1,45 @@
-.main{
+#bg-img {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 0px; 
+  top: 0;
+  left: 0;
+}
+
+.main {
+  position: absolute;
+  top: 0px;
   left: 0px;
 }
-.quote-block{
+.quote-block {
   margin-top: 150px;
   background-color: rgba(207, 207, 209, 0.8);
   height: 200px;
 }
-#header{
+#header {
   background-color: rgba(207, 207, 209, 0.9);
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: 40px;
 }
-.quote-block, #header{
+.quote-block,
+#header {
   border-radius: 5px;
 }
-#quote-display, #button-div{
+#quote-display,
+#button-div {
   padding-top: 30px;
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   font-size: 18px;
 }
-#subtitle{
+#subtitle {
   font-size: 25px;
 }
-#header, #subtitle, #quote-display{
+#header,
+#subtitle,
+#quote-display {
   color: white;
   text-shadow: 1px 1px 2px black, 0 0 1em grey, 0 0 0.2em grey;
 }
-#twitter-share{
+#twitter-share {
   display: none;
 }
