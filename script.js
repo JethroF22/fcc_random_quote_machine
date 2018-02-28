@@ -1,5 +1,6 @@
 const quoteButton = document.getElementById("fetch_quote");
 const quoteDisplay = document.getElementById("quote-display");
+const quoteText = document.getElementById("quote-text");
 const twitterButton = document.getElementById("twitter-share");
 const backgroundDiv = document.getElementById("bg-img");
 
@@ -15,6 +16,7 @@ const imageSources = [
 ];
 
 function changeBackground() {
+  backgroundDiv.classList.add("fade-in");
   currentBackgroundIndex =
     currentBackgroundIndex === imageSources.length - 1
       ? 0
@@ -22,7 +24,6 @@ function changeBackground() {
   backgroundDiv.style.backgroundImage = `url(${
     imageSources[currentBackgroundIndex]
   })`;
-  backgroundDiv.classList.add("fade-in");
 }
 
 function fetchQuote(params) {
@@ -46,7 +47,7 @@ function fetchQuote(params) {
 function displayQuote(data) {
   const quote = data["quoteText"];
   const author = data["quoteAuthor"] ? data["quoteAuthor"] : "Author Unknown";
-  quoteDisplay.innerHTML = `<em>"${quote}" (${author})</em>`;
+  quoteText.innerHTML = `<em>"${quote}" (${author})</em>`;
   quoteDisplay.classList.add("fade-in");
   const tweetUrl = `https://twitter.com/intent/tweet?text=${quote}`;
   twitterButton.href = tweetUrl;
