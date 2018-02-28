@@ -27,10 +27,9 @@ function changeBackground() {
 
 function fetchQuote(params) {
   // Make AJAX request
-  console.log("clicked");
 
   const key = parseInt(Math.random() * 999999);
-  const url = `http://api.forismatic.com/api/1.0/https://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
+  const url = `http://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
 
   const xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {
@@ -47,17 +46,23 @@ function fetchQuote(params) {
 function displayQuote(data) {
   const quote = data["quoteText"];
   const author = data["quoteAuthor"] ? data["quoteAuthor"] : "Author Unknown";
-  console.log(quote, author);
   quoteDisplay.innerHTML = `<em>"${quote}" (${author})</em>`;
   quoteDisplay.classList.add("fade-in");
   const tweetUrl = `https://twitter.com/intent/tweet?text=${quote}`;
   twitterButton.href = tweetUrl;
+  if (!twitterButton.style.display) {
+    twitterButton.style.display = "block";
+  }
+  twitterButton.classList.add("fade-in");
   changeBackground();
 }
 
 quoteButton.addEventListener("click", fetchQuote);
 quoteDisplay.addEventListener("animationend", () => {
   quoteDisplay.classList.remove("fade-in");
+});
+twitterButton.addEventListener("animationend", () => {
+  twitterButton.classList.remove("fade-in");
 });
 backgroundDiv.addEventListener("animationend", () => {
   backgroundDiv.classList.remove("fade-in");
