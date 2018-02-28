@@ -29,7 +29,7 @@ function fetchQuote(params) {
   // Make AJAX request
 
   const key = parseInt(Math.random() * 999999);
-  const url = `http://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
+  const url = `http://cors-anywhere.herokuapp.com/api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
 
   const xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {
