@@ -15,17 +15,6 @@ const imageSources = [
   "https://i.imgur.com/FMA5Y3v.jpg"
 ];
 
-function changeBackground() {
-  backgroundDiv.classList.add("fade-in");
-  currentBackgroundIndex =
-    currentBackgroundIndex === imageSources.length - 1
-      ? 0
-      : currentBackgroundIndex + 1;
-  backgroundDiv.style.backgroundImage = `url(${
-    imageSources[currentBackgroundIndex]
-  })`;
-}
-
 function fetchQuote(params) {
   // Make AJAX request
 
@@ -54,8 +43,7 @@ function displayQuote(data) {
   if (!twitterButton.style.display) {
     twitterButton.style.display = "block";
   }
-  twitterButton.classList.add("fade-in");
-  changeBackground();
+  twitterButton.classList.add("fade-in")
 }
 
 quoteButton.addEventListener("click", fetchQuote);
@@ -64,10 +52,7 @@ quoteDisplay.addEventListener("animationend", () => {
 });
 twitterButton.addEventListener("animationend", () => {
   twitterButton.classList.remove("fade-in");
-});
-backgroundDiv.addEventListener("animationend", () => {
-  backgroundDiv.classList.remove("fade-in");
-});
+})
 
 // $(function() {
 //   $("#fetch_quote").click(function() {
