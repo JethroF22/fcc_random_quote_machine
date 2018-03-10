@@ -60,6 +60,12 @@ body {
 #twitter-share {
   display: none;
   margin: 0 auto;
+  background-color: #00aced;
+  color: #fff;
+  width: 10%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
 }
 
 @keyframes fadeIn {
