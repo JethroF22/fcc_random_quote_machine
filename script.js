@@ -7,52 +7,69 @@ const backgroundDiv = document.getElementById("bg-img");
 const quoteScript = document.createElement("script");
 let currentBackgroundIndex = 0;
 
-const imageSources = [
-  "https://i.imgur.com/7q5er0P.jpg",
-  "https://i.imgur.com/hvO1yfF.jpg",
-  "https://i.imgur.com/jOlIdII.jpg",
-  "https://i.imgur.com/waJ33kA.jpg",
-  "https://i.imgur.com/FMA5Y3v.jpg"
-];
-
 function fetchQuote(params) {
+  quoteDisplay.classList.add("fade-out");
   // Make AJAX request
 
   const key = parseInt(Math.random() * 999999);
-  const url = `http://cors-anywhere.herokuapp.com/api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
+  const url = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&key=${key}&lang=en&format=json`;
 
-  const xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-    xhr.open("GET", url, true);
-    xhr.onload = function() {
-      if (this.status === 200) {
-        displayQuote(JSON.parse(this.responseText));
+  fetch(url)
+    .then(response => {
+      return response.text();
+    })
+    .then(data => {
+      try {
+        displayQuote(JSON.parse(data));
+      } catch (error) {
+        displayError("parsing error");
       }
-    };
-    xhr.send();
-  }
+    })
+    .error(err => {});
+
+  // const xhr = new XMLHttpRequest();
+  // if ("withCredentials" in xhr) {
+  //   xhr.open("GET", url, true);
+  //   xhr.onload = function() {
+  //     if (this.status === 200) {
+  //       displayQuote(JSON.parse(this.responseText));
+  //     }
+  //   };
+  //   xhr.send();
+  // }
 }
 
 function displayQuote(data) {
   const quote = data["quoteText"];
   const author = data["quoteAuthor"] ? data["quoteAuthor"] : "Author Unknown";
   quoteText.innerHTML = `<em>"${quote}" (${author})</em>`;
+  quoteDisplay.classList.remove("fade-out");
   quoteDisplay.classList.add("fade-in");
   const tweetUrl = `https://twitter.com/intent/tweet?text=${quote}`;
   twitterButton.href = tweetUrl;
   if (!twitterButton.style.display) {
     twitterButton.style.display = "block";
   }
-  twitterButton.classList.add("fade-in")
+  twitterButton.classList.add("fade-in");
 }
 
+// function displayError(error) {
+//   if (condition) {
+
+//   } else {
+
+//   }
+// }
+
 quoteButton.addEventListener("click", fetchQuote);
-quoteDisplay.addEventListener("animationend", () => {
-  quoteDisplay.classList.remove("fade-in");
+quoteDisplay.addEventListener("animationend", e => {
+  if (e.animationName === "fadeIn") {
+    quoteDisplay.classList.remove("fade-in");
+  }
 });
 twitterButton.addEventListener("animationend", () => {
   twitterButton.classList.remove("fade-in");
-})
+});
 
 // $(function() {
 //   $("#fetch_quote").click(function() {
